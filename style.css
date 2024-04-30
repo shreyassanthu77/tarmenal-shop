@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #000d17;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #0f312a;
+  border-radius: 1em;
+}
+
 html {
   color-scheme: light dark;
 }
@@ -41,21 +54,20 @@ body {
 
 header {
   --_border-color: #aaa;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1.25fr repeat(3, 1fr) 2fr;
+  align-items: center;
   border: 1px solid var(--_border-color);
   border-radius: 0.3rem;
 
   strong,
   a {
     display: block;
-    padding: 1rem 1.585rem;
+    padding: 1rem 0;
     text-align: center;
     text-decoration: none;
     color: var(--_border-color);
     font-size: 1.25rem;
-    max-width: max-content;
   }
 
   a {
@@ -65,16 +77,95 @@ header {
 
   a:hover {
     background-color: #ffffff33;
+    color: #fff;
+  }
+
+  a::first-letter,
+  a span {
+    font-weight: bold;
   }
 
   a::first-letter {
-    font-weight: bold;
-    color: #fff;
     margin-right: 0.48rem;
   }
+}
 
-  a span {
-    color: #fff;
+main {
+  padding-top: 4rem;
+  line-height: 1.75;
+  color: #aaa;
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h1 {
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  p:nth-child(2) span {
+    margin-inline: 1rem;
+
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+  }
+
+  .price {
+    font-size: 1.5rem;
     font-weight: bold;
+    color: orangered;
+  }
+
+  form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button,
+    input {
+      padding: 1rem;
+      background-color: transparent;
+      outline: none;
+      border: 1px solid #666;
+      border-radius: 0.3rem;
+      max-width: calc(2rem + 3ch);
+      transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+
+      &:hover:is(button) {
+        background-color: #ffffff33;
+      }
+
+      &:focus-visible {
+        border-color: #fff;
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #aaa;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-top: 1px solid #555;
+  margin-top: calc(100vh - 100% - 3rem);
+  padding-inline: 3rem;
+  position: sticky;
+  bottom: 0;
+
+  p {
+    padding: 1.25rem 0;
+
+    &::first-letter {
+      color: #ddd;
+      font-weight: bold;
+      margin-right: 0.48rem;
+    }
   }
 }
